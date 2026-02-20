@@ -31,3 +31,5 @@ C:\Users\just1\Documents\Dev\edible\backend\obj\Debug\net10.0\refint\backend.dll
 C:\Users\just1\Documents\Dev\edible\backend\obj\Debug\net10.0\backend.pdb
 C:\Users\just1\Documents\Dev\edible\backend\obj\Debug\net10.0\backend.genruntimeconfig.cache
 C:\Users\just1\Documents\Dev\edible\backend\obj\Debug\net10.0\ref\backend.dll
+C:\Users\just1\Documents\Dev\edible\backend\obj\Debug\net10.0\backend.sourcelink.json
+C:\Users\just1\Documents\Dev\edible\backend\bin\Debug\net10.0\Data\food.json

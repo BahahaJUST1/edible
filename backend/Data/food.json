@@ -1,0 +1,38 @@
+[
+    {
+        "name": "chocolat",
+        "level": 2
+    },
+    {
+        "name": "raisin",
+        "level": 2
+    },
+    {
+        "name": "café/thé",
+        "level": 2
+    },
+    {
+        "name": "alcool",
+        "level": 2
+    },
+    {
+        "name": "noix",
+        "level": 2
+    },
+    {
+        "name": "xylitol",
+        "level": 2
+    },
+    {
+        "name": "avocat",
+        "level": 1
+    },
+    {
+        "name": "os",
+        "level": 1
+    },
+    {
+        "name": "thon",
+        "level": 1
+    }
+]
