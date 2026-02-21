@@ -1,0 +1,6 @@
+@for (food of foodList; track $index) {
+  <div class="food-item">
+    <img [src]="'images/' + food.image" [alt]="food.image" />
+    <h3>{{ food.name }}</h3>
+  </div>
+}

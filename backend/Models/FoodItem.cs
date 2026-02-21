@@ -4,5 +4,6 @@ namespace backend.Models
     {
         public required string Name { get; set; }
         public required int Level { get; set; }
+        public required string Image { get; set; }
     }   
 }

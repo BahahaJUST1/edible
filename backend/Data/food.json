@@ -1,38 +1,52 @@
 [
     {
-        "name": "chocolat",
-        "level": 2
+        "name": "Chocolat",
+        "level": 2,
+        "image": "chocolate.png"
     },
     {
-        "name": "raisin",
-        "level": 2
+        "name": "Raisin",
+        "level": 2,
+        "image": "grapes.png"
     },
     {
-        "name": "café/thé",
-        "level": 2
+        "name": "Café",
+        "level": 2,
+        "image": "coffee.png"
     },
     {
-        "name": "alcool",
-        "level": 2
+        "name": "Thé",
+        "level": 2,
+        "image": "tea.png"
     },
     {
-        "name": "noix",
-        "level": 2
+        "name": "Alcool",
+        "level": 2,
+        "image": "alcohol.png"
     },
     {
-        "name": "xylitol",
-        "level": 2
+        "name": "Noix",
+        "level": 2,
+        "image": "nuts.png"
     },
     {
-        "name": "avocat",
-        "level": 1
+        "name": "Xylitol",
+        "level": 2,
+        "image": "xylitol.png"
     },
     {
-        "name": "os",
-        "level": 1
+        "name": "Avocat",
+        "level": 1,
+        "image": "avocado.png"
     },
     {
-        "name": "thon",
-        "level": 1
+        "name": "Os",
+        "level": 1,
+        "image": "bone.png"
+    },
+    {
+        "name": "Thon",
+        "level": 1,
+        "image": "tuna.png"
     }
 ]
