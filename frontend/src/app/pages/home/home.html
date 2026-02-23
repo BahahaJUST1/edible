@@ -1,0 +1,19 @@
+<div class="flex text-center gap-4">
+
+    <div
+        [routerLink]="['/food', 'deadly']"
+        class="flex flex-col border-2 border-red-500 text-red-500 bg-red-50 rounded-md ml-6 p-1 w-1/2 gab-4 py-4"
+    >
+        <span class="uppercase h-full font-bold">Les aliments nocifs</span>
+        <span class="text-xs h-full flex items-center justify-center font-medium">Ceux à proscrire</span>
+    </div>
+
+    <div 
+        [routerLink]="['/food', 'dangerous']"
+        class="flex flex-col items-center border-2 border-amber-500 text-amber-500 bg-amber-50 rounded-md mr-6 p-1 w-1/2 gap-4 py-4"
+    >
+        <span class="uppercase font-bold">Les aliments dangereux</span>
+        <span class="text-xs h-full flex items-center justify-center font-medium">Ceux à limiter ou à consommer avec modération</span>
+    </div>
+
+</div>

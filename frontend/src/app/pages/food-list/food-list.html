@@ -1,6 +1,8 @@
-@for (food of foodList; track $index) {
-  <div class="food-item">
-    <img [src]="'images/' + food.image" [alt]="food.image" />
-    <h3>{{ food.name }}</h3>
-  </div>
-}
+<div class="grid grid-cols-2 gap-4 p-4">
+  @for (food of foodList; track $index) {
+    <div class="flex flex-col items-center border-2 border-gray-300 bg-white rounded-md p-4 gap-2">
+      <img [src]="'images/' + food.image" [alt]="food.name" class="w-full object-cover rounded" />
+      <span class="uppercase font-bold text-gray-700">{{ food.name }}</span>
+    </div>
+  }
+</div>
