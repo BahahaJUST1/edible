@@ -1,6 +1,45 @@
-<div class="grid grid-cols-2 gap-4 p-4">
-  @for (food of foodList; track $index) {
-    <div class="flex flex-col items-center border-2 border-gray-300 bg-white rounded-md p-4 gap-2">
+<div class="sticky top-14 bg-white z-10 pb-3">
+
+  <!-- subtitle & description -->
+  <div 
+    class="border mx-4 mb-3 rounded px-3 py-1.5"
+    [ngClass]="level === 'deadly' ? 'border-red-500 bg-red-100' : 'border-amber-500 bg-amber-50'">
+
+    <h2 class="text-left text-lg font-medium">
+      Liste des aliments 
+      <span [ngClass]="level === 'deadly' ? 'text-red-500 underline' : 'text-amber-500 underline'">
+        {{ level === 'deadly' ? 'nocifs' : 'dangereux' }}
+      </span>
+    </h2>
+
+    <h3 class="text-xs text-justify">
+      {{ 
+        level === 'deadly' 
+          ? 'Ces aliments sont mortels pour votre animal de compagnie. La moindre dose ingérée pourrait lui être fatale.' 
+          : 'Ces aliments constituent un danger pour votre animal de compagnie. Ils peuvent être consommés en très petites quantités en fonction du poids et de la taille de votre animal.'
+      }}
+    </h3>
+
+  </div>
+  <!-- EO subtitle & description -->
+
+  <!-- search input -->
+  <div class="mx-4">
+    <input
+      [(ngModel)]="searchTerm"
+      placeholder="Rechercher un aliment..."
+      class="w-full border-2 border-gray-300 rounded-md px-2 py-1"
+    />
+  </div>
+  <!-- EO search input -->
+
+</div>
+
+<div class="grid grid-cols-2 gap-4 px-4 pb-4">
+  @for (food of filteredFoodList; track $index) {
+    <div 
+      class="flex flex-col items-center border-2 border-gray-300 bg-white rounded-md p-4 gap-2"
+    >
       <img [src]="'images/' + food.image" [alt]="food.name" class="w-full object-cover rounded" />
       <span class="uppercase font-bold text-gray-700">{{ food.name }}</span>
     </div>

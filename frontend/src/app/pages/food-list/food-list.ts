@@ -2,10 +2,13 @@ import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FoodListService } from '../../services/food-list';
 import { Food } from '../../models/food.model';
+import { FormsModule } from '@angular/forms';
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: 'app-food-list',
   templateUrl: './food-list.html',
+  imports: [FormsModule, NgClass]
 })
 export class FoodListComponent implements OnInit {
   private route = inject(ActivatedRoute);
@@ -15,14 +18,19 @@ export class FoodListComponent implements OnInit {
   private cdr = inject(ChangeDetectorRef);
 
   public foodList: Food[] = [];
+  public level: string = this.route.snapshot.paramMap.get('level')!;
+
+  public searchTerm: string = '';
 
   ngOnInit(): void {
-    const level = this.route.snapshot.paramMap.get('level');
-
-    this.foodService.getFoodList(level!).subscribe(response => {
+    this.foodService.getFoodList(this.level).subscribe(response => {
       this.foodList = response;
       // on indique à Angular qu'un changement a eu lieu au niveau des données du composant
       this.cdr.detectChanges();
     });
+  }
+
+  get filteredFoodList(): Food[] {
+    return this.foodList.filter(food => food.name.toLowerCase().trim().includes(this.searchTerm.toLowerCase().trim()));
   }
 }
