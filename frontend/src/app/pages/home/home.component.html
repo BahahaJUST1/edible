@@ -1,0 +1,94 @@
+<!-- deadly & dangerous food lists -->
+<div class="flex text-center gap-4 mt-4">
+
+    <div
+        [routerLink]="['/food', 'deadly']"
+        class="flex flex-col border-2 border-red-500 text-red-500 bg-red-50 rounded-md ml-6 p-1 w-1/2 gab-4 py-4"
+    >
+        <span class="uppercase h-full font-bold">Les aliments nocifs</span>
+        <span class="text-xs h-full flex items-center justify-center font-medium">Ceux à proscrire</span>
+    </div>
+
+    <div 
+        [routerLink]="['/food', 'dangerous']"
+        class="flex flex-col items-center border-2 border-amber-500 text-amber-500 bg-amber-50 rounded-md mr-6 p-1 w-1/2 gap-4 py-4"
+    >
+        <span class="uppercase font-bold">Les aliments dangereux</span>
+        <span class="text-xs h-full flex items-center justify-center font-medium">Ceux à limiter ou à consommer avec modération</span>
+    </div>
+
+</div>
+<!-- EO deadly & dangerous food lists -->
+
+
+<!-- search input -->
+<div class="mx-6 mt-4 relative">
+    <input
+        placeholder="Rechercher un aliment..."
+        class="w-full border border-gray-400 rounded-md px-2 py-1"
+        (input)="updateSearchTerm($event);"
+        (keyup.enter)="searchFood();"
+    />
+    <button
+        type="button"
+        class="absolute inset-y-0 right-0 flex items-center pr-3"
+        (click)="searchFood();"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+           <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m1.35-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+    </button>
+</div>
+<!-- EO search input -->
+
+<!-- modal -->
+@if (isModalOpen) {
+    <div class="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
+        <div class="bg-white rounded-sm p-4 w-[85%] h-[90%] flex flex-col">
+
+            <!-- modal title -->
+            <h2 class="text-md bg-gray-200 p-1.5 text-center font-semibold mb-4">Résultats de recherche pour "{{ searchTerm }}" :</h2>
+
+            <!-- modal content -->
+            <div class="flex-1 overflow-y-auto">
+                <div class="grid" [ngClass]="{ 'h-full': !searchedFood.length }">
+                    @if (!searchedFood.length) {
+                        <p class="text-center text-gray-500 flex items-center justify-center h-full">Aucun aliment trouvé.</p>
+                    }
+                    @else {
+                        @for (food of searchedFood; track $index) {
+                            <div class="flex items-center border-b border-gray-300 bg-white font-semibold text-sm">
+                                <img [src]="'images/' + food.image" [alt]="food.name" class="w-16 object-cover mr-4" />
+                                <span class="text-gray-700">{{ food.name }}&nbsp; •</span>
+                                <span [ngClass]="food.level === 2 ? 'text-red-500' : 'text-amber-500'">&nbsp; {{ 
+                                    food.level === 2 ? 'Nocif' : 'Dangereux'
+                                }}</span>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <!-- close modal -->
+            <div class="flex justify-end mt-4">
+                <button (click)="closeModal()" class="px-4 py-2 bg-gray-300 rounded-md">Fermer</button>
+            </div>
+
+        </div>
+    </div>
+}
+
+
+<!-- video flow -->
+<div class="border border-gray-400 mx-6 mt-4 h-52 rounded-md overflow-hidden relative">
+    <video #videoElement autoplay playsinline class="w-full h-full object-cover"></video>
+</div>
+<!-- EO video flow -->
+
+<!-- camera button -->
+<button class="border-2 mt-2 h-10 rounded-full w-10 mx-auto flex items-center justify-center bg-white border-gray-400">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7zm7-13h-1.4l-1.7-2H8.1L6.4 2.5H5A3.5 3.5 0 0 0 1.5 6v12A3.5 3.5 0 0 0 5 21.5h14a3.5 3.5 0 0 0 3.5-3.5V6A3.5 3.5 0 0 0 19 2.5z"/>
+    </svg>
+</button>
+<!-- EO camera button -->

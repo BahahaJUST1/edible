@@ -1,13 +1,13 @@
 import { Component, inject, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FoodListService } from '../../services/food-list';
+import { FoodListService } from '../../services/food-list.service';
 import { Food } from '../../models/food.model';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from "@angular/common";
 
 @Component({
   selector: 'app-food-list',
-  templateUrl: './food-list.html',
+  templateUrl: './food-list.component.html',
   imports: [FormsModule, NgClass]
 })
 export class FoodListComponent implements OnInit {

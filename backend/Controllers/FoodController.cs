@@ -29,7 +29,8 @@ namespace backend.Controllers
         [HttpGet()]
         public IActionResult GetAllFood()
         {
-            return Ok(ParseJsonFoodData());
+            var searchTerm = HttpContext.Request.Query["name"].ToString().ToLower().Trim();
+            return Ok(ParseJsonFoodData().Where(food => food.Name.ToLower().Contains(searchTerm)));
         }
 
         [HttpGet("deadly")]
