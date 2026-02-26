@@ -20,6 +20,9 @@ export class HomeComponent implements AfterViewInit {
   private cdr = inject(ChangeDetectorRef);
 
   @ViewChild('videoElement') videoElement!: ElementRef<HTMLVideoElement>;
+  @ViewChild('canvasElement') canvasElement!: ElementRef<HTMLCanvasElement>;
+
+  public photoDataUrl: string | null = null;
 
   ngAfterViewInit(): void {
     navigator.mediaDevices.getUserMedia({ video: true })
@@ -29,6 +32,32 @@ export class HomeComponent implements AfterViewInit {
       .catch((error) => {
         console.error('Error accessing webcam:', error);
       });
+  }
+
+  takePhoto(): void {
+    // recover html elements from angular references
+    const video = this.videoElement.nativeElement;
+    const canvas = this.canvasElement.nativeElement;
+    
+    // adjust canvas to video size
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    // catch the current frame of the video and convert it to a data URL witch will be convert to a downloadable image
+    const context = canvas.getContext('2d');
+    if (context) {
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      this.photoDataUrl = canvas.toDataURL('image/png');
+
+      this.downloadPhoto(this.photoDataUrl);
+    }
+  }
+
+  downloadPhoto(dataUrl: string): void {
+    const link = document.createElement('a');
+    link.href = dataUrl;
+    link.download = `photo_${Date.now()}.jpg`;
+    link.click();
   }
 
   updateSearchTerm(event: Event): void {
