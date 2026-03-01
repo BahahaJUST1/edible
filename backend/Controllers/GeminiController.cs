@@ -22,9 +22,10 @@ namespace backend.Controllers
             return Ok(new { Answer = answer });
         }
 
-        [HttpPost("analyze")]
+        [HttpPost("analyze-image")]
         public async Task<IActionResult> AnalyzeImage([FromBody] AnalyzeRequest request)
         {
+            Console.WriteLine("Received image analysis request with prompt: " + request);
             var result = await _geminiService.AnalyzeImageAsync(request.Base64Image, request.Prompt);
             // create an anonymous object to return the result (ex: { "result": "The analysis of the image is..." })
             return Ok(new { Result = result });
